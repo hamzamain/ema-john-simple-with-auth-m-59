@@ -1,12 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import About from "./components/About/About";
-import Grandpa from "./components/Grandpa/Grandpa";
-import Inventory from "./components/Inventory/Inventory";
-import Orders from "./components/Orders/Orders";
+import Main from "./layouts/Main";
 import Shop from "./components/Shop/Shop";
-import Main from "./Layouts/Main";
-import { productsAndCartLodar } from "./Loders/ProductsAndCartLoders";
+import Orders from "./components/Orders/Orders";
+import Inventory from "./components/Inventory/Inventory";
+import { productsAndCartLoader } from "./loaders/productsAndCartLoader";
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
+import Shipping from "./components/Shipping/Shipping";
+import PrivateRoute from "./components/router/PrivateRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,28 +23,36 @@ function App() {
           element: <Shop></Shop>,
         },
         {
-          path: "/orders",
-          loader: productsAndCartLodar,
+          path: "orders",
+          loader: productsAndCartLoader,
           element: <Orders></Orders>,
         },
         {
-          path: "/inventory",
+          path: "inventory",
           element: <Inventory></Inventory>,
         },
         {
-          path: "/grandpa",
-          element: <Grandpa></Grandpa>,
+          path: "about",
+          element: <About></About>,
         },
         {
-          path: "/about",
-          element: <About></About>,
+          path: "/login",
+          element: <Login></Login>,
+        },
+        {
+          path: "/signup",
+          element: <SignUp></SignUp>,
+        },
+        {
+          path: "/shipping",
+          element: (
+            <PrivateRoute>
+              <Shipping></Shipping>
+            </PrivateRoute>
+          ),
         },
       ],
     },
-    // {
-    //   path: "shop",
-    //   element: <Shop></Shop>,
-    // },
   ]);
   return (
     <div>

@@ -1,15 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
 
 const Inventory = () => {
-  return (
-    <div>
-      <h2>this is Inventory components</h2>
-      <h3>
-        plese visite our <Link to={"/about"}>about</Link> page
-      </h3>
-    </div>
-  );
+    return (
+        <div>
+            <h2>This is Inventory</h2>
+        </div>
+    );
 };
 
 export default Inventory;
